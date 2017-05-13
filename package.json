@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "@redoxengine/redox-rabbit": "^1.0.1",
+    "rxjs": "^5.3.0"
+  }
+}
