@@ -2,7 +2,7 @@ const Rabbit = require('redox-rabbit');
 const fs = require('fs');
 const Observable = require('rxjs/Rx').Observable;
 
-const activeQueueName = 'ACTIVE';
+const activeQueueName = 'NEW_ACTIVE_1';
 
 const rabbit = Rabbit.createClient();
 
@@ -19,15 +19,27 @@ const process = m => Observable.create(o => {
   }, delay);
 });
 
+
+var handler = (() => {
+  var cache = {};
+  return message => {
+    if (!message.content.reject) {
+      console.log('resolving')
+      message.ack();
+    } else if (cache[message.content.id] > 1) {
+      console.log('resolving');
+      message.ack();
+    } else {
+      cache[message.content.id] = (cache[message.content.id] || 0) + 1;
+      message.nack();
+    }
+  }
+})()
+
+
 rabbit.then(client => {
   client.observe(activeQueueName)
     .concatMap(process)
-    .subscribe(message => {
-      if (message.content.reject) {
-        message.ack()
-      } else {
-        message.ack();
-      }
-    }, a => console.log(a), e => console.log(e));
+    .subscribe(handler, a => console.log(a), e => console.log(e));
 });
 

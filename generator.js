@@ -10,14 +10,13 @@ const rabbit = createClient();
 rabbit.then(Rabbit => {
 
 
-  Rabbit.addQueue('SOURCE-1', { destination: 'ACTIVE' }).then(() => {
+  Rabbit.addQueue('NEW_SOURCE_1', { destination: 'NEW_ACTIVE_1', ordered: false }).then(() => {
     Observable.interval(4000)
       .take(8)
       .do(i => console.log(`sending ${i}`))
       .concatMap(i =>
-        Rabbit.send('SOURCE-1', {
+        Rabbit.send('NEW_SOURCE_1', {
           id: i,
-          source: 'SOURCE-1',
           delay: 1000 * i,
           reject: i % 3 === 1
         })

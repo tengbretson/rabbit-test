@@ -1,0 +1,49 @@
+
+***
+receiving 0:SOURCE-1
+processed 0:SOURCE-1
+{ ack: [Function],
+  content: { id: 0, source: 'SOURCE-1', delay: 0, reject: false },
+  nack: [Function] }
+***
+receiving 1:SOURCE-1
+processed 1:SOURCE-1
+{ ack: [Function],
+  content: { id: 1, source: 'SOURCE-1', delay: 1000, reject: true },
+  nack: [Function] }
+***
+receiving 2:SOURCE-1
+processed 2:SOURCE-1
+{ ack: [Function],
+  content: { id: 2, source: 'SOURCE-1', delay: 2000, reject: false },
+  nack: [Function] }
+***
+receiving 3:SOURCE-1
+processed 3:SOURCE-1
+{ ack: [Function],
+  content: { id: 3, source: 'SOURCE-1', delay: 3000, reject: false },
+  nack: [Function] }
+***
+receiving 4:SOURCE-1
+***
+receiving 5:SOURCE-1
+processed 4:SOURCE-1
+{ ack: [Function],
+  content: { id: 4, source: 'SOURCE-1', delay: 4000, reject: true },
+  nack: [Function] }
+***
+receiving 6:SOURCE-1
+processed 5:SOURCE-1
+{ ack: [Function],
+  content: { id: 5, source: 'SOURCE-1', delay: 5000, reject: false },
+  nack: [Function] }
+***
+receiving 7:SOURCE-1
+processed 6:SOURCE-1
+{ ack: [Function],
+  content: { id: 6, source: 'SOURCE-1', delay: 6000, reject: false },
+  nack: [Function] }
+processed 7:SOURCE-1
+{ ack: [Function],
+  content: { id: 7, source: 'SOURCE-1', delay: 7000, reject: true },
+  nack: [Function] }
